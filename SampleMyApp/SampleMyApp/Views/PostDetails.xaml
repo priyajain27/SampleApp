@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="PostDetails"
+             x:Class="SampleMyApp.Views.PostDetails">
+        <ContentPage.Content>
+        
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+
+            </Grid.RowDefinitions>
+
+            <StackLayout Padding="12,5,5,10" Grid.Row="0" BackgroundColor="Aqua">
+                <Label Text="{Binding SelectedPost.body}" VerticalTextAlignment="Center" />
+            </StackLayout>
+            <Label Text="Comments" Padding="0,15,0,10" HorizontalTextAlignment="Center" Grid.Row="1" FontSize="Medium"/>
+
+            <StackLayout Grid.Row="2" >
+                <ListView x:Name="listView"  HasUnevenRows="True"  
+              Margin="10"  SeparatorColor="Gray" ItemsSource="{Binding CommentsList}" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell Height="80">
+
+
+                                <StackLayout Padding="5,10,10,5" 
+                                 HorizontalOptions="StartAndExpand"
+                                 Orientation="Vertical">
+                                    <Label Text="{Binding name}" FontSize="Medium"
+                               VerticalTextAlignment="Center"  HorizontalOptions="FillAndExpand"/>
+                                    <Label Text="{Binding email}" FontSize="Small"
+                               VerticalTextAlignment="Start" TextColor="CornflowerBlue"/>
+                                </StackLayout>
+
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                   
+                   
+                </ListView>
+            </StackLayout>
+            <StackLayout Padding="15,0,0,10" Grid.Row="3" Orientation="Horizontal">
+                <Frame BackgroundColor="White" Padding="1" HorizontalOptions="FillAndExpand" CornerRadius="5" BorderColor="Black" >
+                <Editor  Text="Comments"  FontSize="Small" HorizontalOptions="FillAndExpand"/>
+                </Frame>
+
+                <Button Text="comment" Padding="2,2,2,2" HorizontalOptions="End"></Button>
+            </StackLayout>
+
+        </Grid>
+
+
+
+    </ContentPage.Content>
+</ContentPage>

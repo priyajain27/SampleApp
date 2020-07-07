@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"    
+           xmlns:abstractions="clr-namespace:RoundedBoxView.Forms.Plugin.Abstractions;assembly=RoundedBoxView.Forms.Plugin.Abstractions"
+           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"    
+           x:Class="SampleMyApp.Views.BadgeView"    
+           HeightRequest="40"     
+           WidthRequest="40">
+    <Grid.Resources>
+        <ResourceDictionary>
+        <Style x:Key="RoundedBoxViewStyle" TargetType="abstractions:RoundedBoxView">
+                <Setter Property="BackgroundColor" Value="Red" />
+                <Setter Property="HeightRequest" Value="100" />
+                <Setter Property="WidthRequest" Value="100" />
+                <Setter Property="CornerRadius" Value="100" />
+
+        </Style>
+        </ResourceDictionary>
+    </Grid.Resources>
+    <abstractions:RoundedBoxView x:Name="BadgeCircle"  Style="{StaticResource RoundedBoxViewStyle}"  VerticalOptions="Center" HorizontalOptions="Center" />
+    <Label x:Name="BadgeLabel" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="15"/>
+</Grid>

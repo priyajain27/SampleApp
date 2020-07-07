@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:SampleMyApp.ViewModels"
+             x:Class="SampleMyApp.Views.Login" 
+             Title="Login">
+    <ContentPage.BindingContext>
+        <vm:LoginViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                <Label Text="Sample MyApp!"
+                       HorizontalOptions="CenterAndExpand" VerticalOptions="Start"
+                       FontSize="20"
+                       TextColor="#212121"
+                       Margin="0,16,0,0"/>
+
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                    <Image HorizontalOptions="Center" VerticalOptions="Center"
+                           WidthRequest="120" HeightRequest="120"
+                           Margin="24"
+                           Source="ic_social_facebook_blue"
+                           />
+                </StackLayout>
+
+                <Button Text="Login"
+                        VerticalOptions="EndAndExpand"
+                        Command="{Binding OnLoginCommand}"
+                        TextColor="White"
+                        BackgroundColor="Accent"
+                        WidthRequest="250"/>
+
+               
+            </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

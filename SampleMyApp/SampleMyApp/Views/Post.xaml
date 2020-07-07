@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="Post"
+             xmlns:behavior="clr-namespace:SampleMyApp.Behaviors"
+             x:Class="SampleMyApp.Views.Post">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="listView"
+                      HasUnevenRows="True"
+                      Margin="10"
+                      SeparatorColor="Gray"
+                      ItemsSource="{Binding PostList}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell Height="70">
+                            <StackLayout Padding="5,0,0,40"
+                                         HorizontalOptions="StartAndExpand"
+                                         Orientation="Vertical">
+                                <Label Text="{Binding title}"
+                                       VerticalTextAlignment="Center" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.Behaviors>
+
+                    <behavior:EventToCommandBehavior EventName="ItemSelected"
+                                                     Command="{Binding OnItemSelectedCommand} " />
+                </ListView.Behaviors>
+            </ListView>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

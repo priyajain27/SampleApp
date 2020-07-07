@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:local="clr-namespace:SampleMyApp.Views;assembly=SampleMyApp"
+    x:Class="SampleMyApp.Views.Dashboard"
+    mc:Ignorable="d"
+    xmlns:behavior="clr-namespace:SampleMyApp.Behaviors"
+    Title="Dashboard"
+>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="{Binding Name}"   />
+        <ToolbarItem Icon="{Binding Picture}"  Command="{Binding ProfileImageCommand}"/>
+
+    </ContentPage.ToolbarItems>
+    
+
+    <StackLayout Orientation="Vertical">
+
+        <ListView x:Name="listView"   
+                  SelectedItem="{Binding SelcetedItem,Mode=TwoWay}"   BackgroundColor="white"
+                  HasUnevenRows="True"  
+                  ItemsSource="{Binding WidgetsData}" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <local:WidgetTemplate />
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.Behaviors>
+                    <behavior:EventToCommandBehavior EventName="ItemSelected"  Command="{Binding OnItemSelectedCommand} " />
+            </ListView.Behaviors>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>

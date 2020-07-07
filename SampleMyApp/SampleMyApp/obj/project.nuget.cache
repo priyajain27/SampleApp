@@ -1,0 +1,40 @@
+{
+  "version": 2,
+  "dgSpecHash": "SrCczKq1BeF6IfWm6m4kWubYY2xnnxn7ChF7LsKzr0HWRE3EpmVdYYNyRA044/Q1lX3isKApl06oiXbpS961wg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\priyajain\\source\\backup\\backup4\\SampleMyApp\\SampleMyApp\\SampleMyApp\\SampleMyApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\priyajain\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\priyajain\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\priyajain\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\priyajain\\.nuget\\packages\\plugin.badge\\2.1.0\\plugin.badge.2.1.0.nupkg.sha512",
+    "C:\\Users\\priyajain\\.nuget\\packages\\plugin.facebookclient\\2.2.1\\plugin.facebookclient.2.2.1.nupkg.sha512",
+    "C:\\Users\\priyajain\\.nuget\\packages\\plugin.googleclient\\2.1.12\\plugin.googleclient.2.1.12.nupkg.sha512",
+    "C:\\Users\\priyajain\\.nuget\\packages\\sqlite-net-pcl\\1.7.335\\sqlite-net-pcl.1.7.335.nupkg.sha512",
+    "C:\\Users\\priyajain\\.nuget\\packages\\sqlitepclraw.bundle_green\\2.0.3\\sqlitepclraw.bundle_green.2.0.3.nupkg.sha512",
+    "C:\\Users\\priyajain\\.nuget\\packages\\sqlitepclraw.core\\2.0.3\\sqlitepclraw.core.2.0.3.nupkg.sha512",
+    "C:\\Users\\priyajain\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.0.3\\sqlitepclraw.lib.e_sqlite3.2.0.3.nupkg.sha512",
+    "C:\\Users\\priyajain\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.0.3\\sqlitepclraw.provider.e_sqlite3.2.0.3.nupkg.sha512",
+    "C:\\Users\\priyajain\\.nuget\\packages\\system.buffers\\4.4.0\\system.buffers.4.4.0.nupkg.sha512",
+    "C:\\Users\\priyajain\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
+    "C:\\Users\\priyajain\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Users\\priyajain\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.2\\system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512",
+    "C:\\Users\\priyajain\\.nuget\\packages\\xam.plugins.forms.roundedboxview\\1.0.0.4\\xam.plugins.forms.roundedboxview.1.0.0.4.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.essentials\\1.3.1\\xamarin.essentials.1.3.1.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.forms\\4.5.0.495\\xamarin.forms.4.5.0.495.nupkg.sha512",
+    "C:\\Users\\priyajain\\.nuget\\packages\\xamarin.forms.googlemaps\\3.3.0\\xamarin.forms.googlemaps.3.3.0.nupkg.sha512",
+    "C:\\Users\\priyajain\\.nuget\\packages\\xamarin.forms.maps\\4.5.0.356\\xamarin.forms.maps.4.5.0.356.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Xam.Plugins.Forms.RoundedBoxView 1.0.0.4' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETStandard,Version=v2.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Xam.Plugins.Forms.RoundedBoxView",
+      "targetGraphs": [
+        ".NETStandard,Version=v2.0"
+      ]
+    }
+  ]
+}

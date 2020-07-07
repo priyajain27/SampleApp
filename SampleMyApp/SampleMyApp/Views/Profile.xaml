@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="SampleMyApp.Views.Profile" 
+             Title="Profile">
+    <ContentPage.Content>
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                
+            </Grid.RowDefinitions>
+            <Image Grid.Row="0" HorizontalOptions="CenterAndExpand" 
+                           WidthRequest="45" HeightRequest="45"
+                           Margin="24"
+                           Source="{Binding Logo}"/>
+            <Image Grid.Row="1" HorizontalOptions="CenterAndExpand" 
+                           WidthRequest="120" HeightRequest="120"
+                           Margin="24"
+                           Source="{Binding Picture}"/>
+            <Label Grid.Row="2" Text="{Binding Name}" HorizontalOptions="CenterAndExpand" />
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>
