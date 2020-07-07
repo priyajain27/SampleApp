@@ -1,9 +1,8 @@
 ﻿using SampleMyApp.Models;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace SampleMyApp
+namespace SampleMyApp.Utility
 {
     public class WebRequestManager
     {

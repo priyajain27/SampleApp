@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
 
-namespace SampleMyApp
-{
+namespace SampleMyApp.Utility 
+{ 
     public static class Constants
     {
 
@@ -11,7 +11,7 @@ namespace SampleMyApp
         public static string CommentsDataUrl = BaseAddress + "/comments";
 
 
-       
+        
     }
 
 }

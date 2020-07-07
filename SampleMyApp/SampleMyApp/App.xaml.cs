@@ -1,4 +1,6 @@
-﻿using SampleMyApp.Views;
+﻿using SampleMyApp.Services;
+using SampleMyApp.Utility;
+using SampleMyApp.Views;
 using Xamarin.Forms;
 
 

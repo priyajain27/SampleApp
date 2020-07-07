@@ -1,9 +1,8 @@
 ﻿using SampleMyApp.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TodoREST;
 
-namespace SampleMyApp
+namespace SampleMyApp.Utility
 {
     public interface IRestService
     {

@@ -8,9 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using SampleMyApp.Models;
-using TodoREST;
+using SampleMyApp.Utility;
 
-namespace SampleMyApp
+namespace SampleMyApp.Services
 {
     public class RestService : IRestService
     {
