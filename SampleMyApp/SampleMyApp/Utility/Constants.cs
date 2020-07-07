@@ -1,6 +1,7 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using System.IO;
 
-namespace TodoREST
+namespace SampleMyApp
 {
     public static class Constants
     {
@@ -8,5 +9,9 @@ namespace TodoREST
         public static string BaseAddress = "http://jsonplaceholder.typicode.com";
         public static string PostDataUrl = BaseAddress + "/posts";
         public static string CommentsDataUrl = BaseAddress + "/comments";
+
+
+       
     }
+
 }
