@@ -45,7 +45,6 @@ namespace SampleMyApp.ViewModels
             }
             catch (Exception ex)
             {
-               // await DisplayAlert("Error", "Unable to get actual location", "Ok");
             }
         }
         /* currently not in use*/

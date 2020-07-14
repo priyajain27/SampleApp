@@ -1,8 +1,5 @@
 ﻿using SampleMyApp.Themes;
-using System;
 using System.Collections.Generic;
-using System.Security.Cryptography;
-using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -10,22 +7,14 @@ namespace SampleMyApp.ViewModels
 {
     class SettingsViewModel:BaseViewModel
     {
-        private bool _isSwitchToggled = false;
         ICollection<ResourceDictionary> mergedDictionaries = Application.Current.Resources.MergedDictionaries;
 
-        public bool IsSwitchedToggled
-        {
-            get { return _isSwitchToggled; }
-            set
-            {
-                _isSwitchToggled = value;
-            }
-        }
-        public ICommand SwitchCommand { get; set; }
+        public bool IsSwitchedToggled { get; set; } = false;
+        public ICommand OnSwitchCommand { get; set; }
 
         public SettingsViewModel() 
         {
-           SwitchCommand = new Command(ChangeTheme);
+            OnSwitchCommand = new Command(ChangeTheme);
 
             
 

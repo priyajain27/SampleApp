@@ -9,6 +9,7 @@ using Android.Content;
 using Permission = Android.Content.PM.Permission;
 using Xamarin.Forms;
 using RoundedBoxView.Forms.Plugin.Droid;
+using Plugin.GoogleClient;
 
 namespace SampleMyApp.Droid
 {
@@ -21,12 +22,14 @@ namespace SampleMyApp.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
+            Xamarin.Forms.Forms.SetFlags("SwipeView_Experimental");
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             FacebookClientManager.Initialize(this);
+
             RoundedBoxViewRenderer.Init();
-            //GoogleClientManager.Initialize(this);
+            GoogleClientManager.Initialize(this);
           
             LoadApplication(new App());
 
@@ -41,7 +44,7 @@ namespace SampleMyApp.Droid
         {
             base.OnActivityResult(requestCode, resultCode, intent);
             FacebookClientManager.OnActivityResult(requestCode, resultCode, intent);
-           // GoogleClientManager.OnAuthCompleted(requestCode, resultCode, intent);
+            GoogleClientManager.OnAuthCompleted(requestCode, resultCode, intent);
         }
 
     }

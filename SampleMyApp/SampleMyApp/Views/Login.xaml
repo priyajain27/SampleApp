@@ -8,30 +8,27 @@
         <vm:LoginViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            
+        <StackLayout Padding="20"
+                     VerticalOptions="CenterAndExpand"
+                     x:Name="mainLayout"
+                     BindableLayout.ItemsSource="{Binding AuthenticationNetworks}">
+            <BindableLayout.ItemTemplate>
+                <DataTemplate>
+                    <Button Text="{Binding Name, StringFormat='Login with {0}'}"
+                            ImageSource="{Binding Icon}"
+                            Command="{Binding Path=BindingContext.OnLoginCommand, Source={x:Reference mainLayout}}"
+                            CommandParameter="{Binding .}"
+                            HeightRequest="45"
+                            TextColor="{Binding Foreground}"
+                            BackgroundColor="{Binding Background}"
+                            WidthRequest="280"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="FillAndExpand" />
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
+        </StackLayout>
 
-                <Label Text="Sample MyApp!"
-                       HorizontalOptions="CenterAndExpand" VerticalOptions="Start"
-                       FontSize="20"
-                       TextColor="#212121"
-                       Margin="0,16,0,0"/>
 
-                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                    <Image HorizontalOptions="Center" VerticalOptions="Center"
-                           WidthRequest="120" HeightRequest="120"
-                           Margin="24"
-                           Source="ic_social_facebook_blue"
-                           />
-                </StackLayout>
-
-                <Button Text="Login"
-                        VerticalOptions="EndAndExpand"
-                        Command="{Binding OnLoginCommand}"
-                        TextColor="White"
-                        BackgroundColor="Accent"
-                        WidthRequest="250"/>
-
-               
-            </StackLayout>
     </ContentPage.Content>
 </ContentPage>

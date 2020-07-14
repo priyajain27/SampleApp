@@ -1,10 +1,9 @@
-﻿using SampleMyApp.Models;
-using SampleMyApp.ViewModels;
+﻿using Plugin.FacebookClient;
+using SampleMyApp.Models;
 using SampleMyApp.Views;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -15,54 +14,22 @@ namespace SampleMyApp.ViewModels
     {
         public INavigation Navigation { get; set; }
         public List<PostData> PostList { get; set; }
-        public IList<WidgetsData> WidgetsData { get; set; }
+        public IList<WidgetData> WidgetData { get; set; }
 
         public object SelectedItem { get; set; }
+        public ICommand OnLogoutClick { get; set; }
 
         public Command<SelectedItemChangedEventArgs> OnItemSelectedCommand { get; set; }
 
-        public ICommand ProfileImageCommand { get; set; }
-        public ICommand FetchPostDataCommand { get; set; }
-
-
-        public string Name
-         {
-             get
-             {
-                 if (Application.Current.Properties.ContainsKey("Name"))
-                 {
-                     return Application.Current.Properties["Name"].ToString();
-                 }
-                 else
-                 {
-                     return String.Empty;
-                 }
-             }
-         }
-         public string Picture
-         {
-             get
-             {
-                 if (Application.Current.Properties.ContainsKey("Picture"))
-                 {
-                     return Application.Current.Properties["Picture"].ToString();
-                 }
-                 else
-                 {
-                     return String.Empty;
-                 }
-             }
-         }
-       
         public DashboardViewModel(INavigation navigation )
         {
             this.Navigation = navigation;
             SelectedItem = null;
 
-            ProfileImageCommand = new Command(async () => await ProfileDetails()); //toolbar profile image redirection
+           // ProfileImageCommand = new Command(async () => await ProfileDetails()); //toolbar profile image redirection
+            OnLogoutClick = new Command(OnLogout);
+            WidgetData = new List<WidgetData>(); // cardview like navigational widgets on Dashboard
 
-            WidgetsData = new List<WidgetsData>(); // cardview like navigational widgets on Dashboard
-            
             Task.Run(async () => { await FetchPostData(); }).Wait(); //load post data
 
             GenerateWidgetModel();
@@ -71,14 +38,34 @@ namespace SampleMyApp.ViewModels
 
 
         }
-        public async Task ProfileDetails()
+        public async void OnLogout()
         {
-            await Navigation.PushAsync(new Profile());
+            if (CrossFacebookClient.Current.IsLoggedIn)
+            {
+                CrossFacebookClient.Current.Logout();
+            }
+
+            Application.Current.Properties["IsUserLoggedIn"] = false;
+            Application.Current.Properties.Remove("Picture");
+            Application.Current.Properties.Remove("Name");
+            PopUntilDestination(typeof(Dashboard));  //pop until first page on Navigational stack
+            var dashboard = App.Current.MainPage.Navigation.NavigationStack.FirstOrDefault(p => p.Title == "Dashboard");
+            {
+                if (dashboard != null)
+                {
+
+                    App.Current.MainPage.Navigation.InsertPageBefore(new Login(), dashboard);
+                    await Navigation.PopAsync();
+
+                }
+            }
+
 
         }
-    async void NavigateToView(SelectedItemChangedEventArgs e)
+        
+        async void NavigateToView(SelectedItemChangedEventArgs e)
         {
-            if (!(e.SelectedItem is WidgetsData item))
+            if (!(e.SelectedItem is WidgetData item))
                 return;
             
             switch (item?.Name)
@@ -93,6 +80,12 @@ namespace SampleMyApp.ViewModels
                 case "Add Post":
                     await Navigation.PushAsync(new AddPost());
                     break;
+                case "Location":
+                    await Navigation.PushAsync(new LocationManager());
+                    break;
+                case "Profile":
+                    await Navigation.PushAsync(new Profile());
+                    break;
             }
 
         }
@@ -100,20 +93,20 @@ namespace SampleMyApp.ViewModels
 
         private void GenerateWidgetModel()
         {
-            string[] arrNames = {
-               "Post", "Add Post","Settings"
+            string[] arrWidget = {
+               "Post", "Add Post","Profile","Settings","Location"
             };
-            for (var i = 0; i < arrNames.Length; i++)
+            for (var i = 0; i < arrWidget.Length; i++)
             {
-                var widgetData = new WidgetsData()
+                var widgetData = new WidgetData()
                 {
 
-                    Name = arrNames[i],
+                    Name = arrWidget[i],
                     PostCount = PostList.Count,
                     IsBadgeVisible = i == 0 ? true : false
 
                 };
-                WidgetsData.Add(widgetData);
+                WidgetData.Add(widgetData);
 
             }
 
@@ -122,7 +115,37 @@ namespace SampleMyApp.ViewModels
 
         public async Task FetchPostData()
         {
-           PostList = await App.RequestManager.GetPostAsync();
+
+            PostList = await App.RequestManager.GetPostAsync();
+            
+
         }
+       
+        void PopUntilDestination(Type DestinationPage)
+        {
+            int LeastFoundIndex = 0;
+            int PagesToRemove = 0;
+
+            for (int index = Navigation.NavigationStack.Count - 2; index > 0; index--)
+            {
+                if (Navigation.NavigationStack[index].GetType().Equals(DestinationPage))
+                {
+                    break;
+                }
+                else
+                {
+                    LeastFoundIndex = index;
+                    PagesToRemove++;
+                }
+            }
+
+            for (int index = 0; index < PagesToRemove; index++)
+            {
+                Navigation.RemovePage(Navigation.NavigationStack[LeastFoundIndex]);
+            }
+
+            Navigation.PopAsync();
+        }
+        
     }
 }

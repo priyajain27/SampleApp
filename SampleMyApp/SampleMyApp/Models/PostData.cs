@@ -1,11 +1,14 @@
-﻿using System;
+﻿using SQLite;
+using System;
 
 namespace SampleMyApp.Models
 {
     public class PostData
     {
-        public string userId { get; set; }
-        public string id { get; set; }
+        [PrimaryKey, AutoIncrement]
+        public int id { get; set; }
+
+        public int userId { get; set; }
 
         public string title { get; set; }
 

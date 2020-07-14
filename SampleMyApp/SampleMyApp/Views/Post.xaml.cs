@@ -1,4 +1,6 @@
-﻿using SampleMyApp.ViewModels;
+﻿using SampleMyApp.Models;
+using SampleMyApp.Utility;
+using SampleMyApp.ViewModels;
 
 
 
@@ -8,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace SampleMyApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Post : ContentPage
+    public partial class Post : ToolBarItems
     {
         readonly PostViewModel ViewModel;
 
@@ -22,6 +24,7 @@ namespace SampleMyApp.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
         }
        
     }

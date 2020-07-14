@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Xamarin.Forms;
 
-namespace SampleMyApp.ViewModels
+namespace SampleMyApp.Utility
 {
-   public class ProfileViewModel
+    public class ToolBarItems : ContentPage
     {
         public string Name
         {
@@ -35,19 +33,15 @@ namespace SampleMyApp.ViewModels
                 }
             }
         }
-        public string Logo
+        public ToolBarItems()
         {
-            get
-            {
-                if (Application.Current.Properties.ContainsKey("Logo"))
-                {
-                    return Application.Current.Properties["Logo"].ToString();
-                }
-                else
-                {
-                    return String.Empty;
-                }
-            }
+            Init();
+        }
+
+        private void Init()
+        {
+            this.ToolbarItems.Add(new ToolbarItem() { Text = Name, Priority = 0, Order = ToolbarItemOrder.Primary });
+            this.ToolbarItems.Add(new ToolbarItem() { IconImageSource = Picture, Priority = 0, Order = ToolbarItemOrder.Primary });
         }
 
     }

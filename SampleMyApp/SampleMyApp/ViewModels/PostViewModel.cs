@@ -1,32 +1,50 @@
 ﻿using SampleMyApp.Models;
 using SampleMyApp.Views;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace SampleMyApp.ViewModels
 {
-    class PostViewModel:BaseViewModel
+    public class PostViewModel:BaseViewModel
     {
         public INavigation Navigation { get; set; }
+      //  public ICommand DeleteCommand => new Command<PostData>(DeletePost);  
+       
+        public ObservableCollection<PostData> PostList { get; set; }
+       
+        public Command<SelectedItemChangedEventArgs> OnPostSelectedCommand { get; set; }
+       
+      /*  void DeletePost(PostData postData)
+        {
+            if (PostList.Contains(postData))
+            {
+                PostList.Remove(postData);
+            }
+            //App.Database.DeletePostAsync(postData);
+            App.RequestManager.DeletePostAsync(postData);
 
-        public List<PostData> PostList { get; set; }
-        public Command<SelectedItemChangedEventArgs> OnItemSelectedCommand { get; set; }
-
+        }*/
+       
         public PostViewModel(INavigation navigation)
         {
             this.Navigation = navigation;
 
             Task.Run(async () => { await FetchPostData(); }).Wait();
-            OnItemSelectedCommand = new Command<SelectedItemChangedEventArgs>(ListViewItemClick);
+           OnPostSelectedCommand = new Command<SelectedItemChangedEventArgs>(PostListItemClick);
 
         }
         public async Task FetchPostData()
          {
-             PostList = await App.RequestManager.GetPostAsync();
+            IList<PostData> list = await App.RequestManager.GetPostAsync();
+
+            PostList = new ObservableCollection<PostData>(list);
+
+
 
         }
-        async void ListViewItemClick(SelectedItemChangedEventArgs e)
+        async void PostListItemClick(SelectedItemChangedEventArgs e)
         {
             if (!(e.SelectedItem is PostData item))
                 return;
@@ -34,6 +52,6 @@ namespace SampleMyApp.ViewModels
 
           
         }
-      
+     
     }
 }

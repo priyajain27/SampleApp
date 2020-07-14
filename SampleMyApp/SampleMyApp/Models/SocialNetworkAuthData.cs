@@ -1,6 +1,6 @@
-﻿namespace SampleMyApp
+﻿namespace SampleMyApp.Models
 {
-    public class NetworkAuthData
+    public class SocialNetworkAuthData
     {
         public string Id { get; set; }
 

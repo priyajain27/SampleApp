@@ -7,17 +7,17 @@
         <Grid >
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
                 
             </Grid.RowDefinitions>
             <Image Grid.Row="0" HorizontalOptions="CenterAndExpand" 
                            WidthRequest="45" HeightRequest="45"
                            Margin="24"
                            Source="{Binding Logo}"/>
-            <Image Grid.Row="1" HorizontalOptions="CenterAndExpand" 
-                           WidthRequest="120" HeightRequest="120"
-                           Margin="24"
+            <Image Grid.Row="1"
+                   Aspect="AspectFit"
+                   Margin="12"
                            Source="{Binding Picture}"/>
             <Label Grid.Row="2" Text="{Binding Name}" HorizontalOptions="CenterAndExpand" />
         </Grid>

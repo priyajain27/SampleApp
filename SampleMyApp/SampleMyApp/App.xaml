@@ -67,8 +67,6 @@
             </Style>
 
             <Color x:Key="Primary">#4267b2</Color>
-
-
         </ResourceDictionary>
     </Application.Resources>
 </Application>

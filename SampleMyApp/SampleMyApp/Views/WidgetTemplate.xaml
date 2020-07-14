@@ -47,7 +47,7 @@
                         
                     </Label>
                      <views:BadgeView Grid.Row="0"  
-                           Grid.Column="1" Text="{Binding PostCount,Mode = TwoWay}" IsVisible="{Binding IsBadgeVisible,Mode = TwoWay}" BadgeColor="DeepSkyBlue" VerticalOptions="Start" HorizontalOptions="End"/>
+                           Grid.Column="1" Text="{Binding PostCount}" IsVisible="{Binding IsBadgeVisible,Mode = TwoWay}" BadgeColor="DeepSkyBlue" VerticalOptions="Start" HorizontalOptions="End"/>
                     
 
 

@@ -3,29 +3,25 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-using Xamarin.Forms;
-
-using SampleMyApp.Models;
-//using ContactsApp.Services;
 
 namespace SampleMyApp.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
 
-        bool isBusy = false;
-        public bool IsBusy
+        //bool isBusy = false;
+       /* public bool IsBusy
         {
             get { return isBusy; }
             set { SetProperty(ref isBusy, value); }
-        }
+        }*/
 
-        string title = string.Empty;
-        public string Title
+       // string title = string.Empty;
+       /* public string Title
         {
             get { return title; }
             set { SetProperty(ref title, value); }
-        }
+        }*/
 
         protected bool SetProperty<T>(ref T backingStore, T value,
             [CallerMemberName]string propertyName = "",
