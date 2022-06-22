@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Plugin.Badge" Version="2.1.0" />
     <PackageReference Include="Plugin.FacebookClient" Version="2.2.1" />
     <PackageReference Include="Plugin.GoogleClient" Version="2.1.12" />
